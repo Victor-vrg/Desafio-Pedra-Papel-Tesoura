@@ -1,0 +1,615 @@
+/* ----- Geral ----- */
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  font-family: "Barlow Semi Condensed", sans-serif;
+  background: radial-gradient(at top, hsl(214, 47%, 23%), hsl(237, 49%, 15%));
+  overflow: hidden;
+}
+
+/* ----- Header ----- */
+.header-wrapper {
+  width: 1000px;
+  display: flex;
+  padding: 20px 30px;
+  justify-content: space-between;
+  align-items: center;
+  margin: 50px auto;
+  border: 4px solid hsl(217, 16%, 45%);
+  border-radius: 20px;
+  margin-top: 8px;
+}
+/*TELA CHEIA*/
+.tela-cheia {
+  text-transform: uppercase;
+  font-family: "Barlow Semi Condensed", sans-serif;
+  width: 100%;
+  color: white;
+  padding: 6px 60px;
+  border: transparent;
+  cursor: pointer;
+  transition: color 0.4s, background-color 0.4s;
+  background-color: transparent;
+}
+h1 {
+  text-transform: uppercase;
+  font-size: 3.5em;
+  max-width: 250px;
+  line-height: 0.8;
+  color: white;
+  margin: 10px 0;
+}
+
+.score-wrapper {
+  padding: 20px 60px 10px;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.score-wrapper p {
+  color: hsl(229, 64%, 46%);
+  text-transform: uppercase;
+  font-size: 1.4em;
+  letter-spacing: 3px;
+}
+
+.score-wrapper #score {
+  font-size: 5em;
+  color: #5b596e;
+  font-weight: 700;
+}
+
+/* ----- Botão de regras e modal ----- */
+.rules-btn {
+  text-transform: uppercase;
+  position: absolute;
+  bottom: 30px;
+  right: 40px;
+  color: white;
+  font-size: 1.4em;
+  letter-spacing: 4px;
+  padding: 14px 40px;
+  border-radius: 12px;
+  border: 2px solid white;
+  cursor: pointer;
+  transition: color 0.4s, background-color 0.4s;
+}
+
+.rules-btn:hover {
+  background-color: #fff;
+  color: hsl(237, 49%, 15%);
+}
+
+.rules-modal {
+  display: none;
+  opacity: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 50px;
+  background-color: #fff;
+  border-radius: 14px;
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5);
+}
+
+.rules-modal-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 50px;
+  font-size: 2.7em;
+  text-transform: uppercase;
+  font-weight: bolder;
+  color: hsl(229, 25%, 31%);
+}
+
+.rules-modal-title img {
+  width: 32px;
+  cursor: pointer;
+}
+
+#rules {
+  width: 450px;
+}
+
+@keyframes modalIn {
+  from {
+    top: -50%;
+    opacity: 0;
+  }
+}
+
+@keyframes modalOut {
+  to {
+    top: -50%;
+    opacity: 0;
+  }
+}
+
+/* ----- Botões do jogo ----- */
+.play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 168px;
+  height: 168px;
+  border-radius: 50%;
+  background-color: #e3e3e3;
+  cursor: pointer;
+  box-shadow: inset 0 8px 1px rgba(0, 0, 0, 0.3);
+}
+
+.play-btn img {
+  margin: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.play-btn-color {
+  position: relative;
+  width: 224px;
+  height: 224px;
+  border-radius: 50%;
+}
+
+.play-btn-color.paper {
+  background: linear-gradient(hsl(230, 89%, 62%), hsl(230, 89%, 65%));
+  box-shadow: 0 8px 1px #2945c0;
+}
+
+.play-btn-color.scissors {
+  background: linear-gradient(hsl(39, 89%, 49%), hsl(40, 84%, 53%));
+  box-shadow: 0 8px 1px #c76c1d;
+}
+
+.play-btn-color.rock {
+  background: linear-gradient(hsl(349, 71%, 52%), hsl(349, 70%, 56%));
+  box-shadow: 0 8px 1px #9f1536;
+}
+
+/* ----- Tabuleiro de jogo ----- */
+.game-wrapper {
+  width: 100%;
+  margin-top: 100px;
+  margin-right: 16px;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 192px 192px 192px;
+  grid-template-rows: 256px 256px;
+  background-image: url("bg-triangle.svg");
+  background-repeat: no-repeat;
+  background-position: calc(50% + 16px);
+  top: 0;
+  left: 0;
+}
+
+.paper {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.scissors {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.rock {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+/* Exibe o texto "Você escolheu" depois da escolha */
+.game-text {
+  position: relative;
+  width: 100%;
+  bottom: 50px;
+}
+
+.text-picked {
+  position: absolute;
+  top: 0px;
+  color: white;
+  font-size: 2em;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.you-picked {
+  left: 20%;
+  transform: translateX(25%);
+}
+
+.game-text.active .you-picked {
+  animation: appear 0.6s 1s linear forwards;
+}
+
+/* Exibe o texto "O adversario escolheu" depois da escolha*/
+.house-picked {
+  left: 65%;
+}
+
+.game-text.active .house-picked,
+.house-moves.active .house-wait {
+  animation: appear 0.6s 2s linear forwards;
+}
+
+/* ----- Exibe o elemento selecionado pelo usuário (rock, paper ou scissors) ----- */
+.play-btn-color.player {
+  transform: scale(1);
+  animation: none;
+  transition: transform 0s;
+}
+
+/* caso não funcione usar apenas o transform */
+.play-btn-color.player.active {
+  position: absolute;
+  top: 50%;
+  left: 20%;
+
+  transform: scale(1.8);
+  transition: transform 1s;
+}
+
+/*Quando o usuário selecionou seu elemento, mostre a seleção do oponente */
+.house-wait {
+  background-color: #172240;
+  width: 224px;
+  height: 224px;
+  position: absolute;
+  top: 50%;
+  left: 65%;
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.play-btn-color.house {
+  position: absolute;
+  top: 50%;
+  left: 65%;
+  transform: scale(0);
+}
+
+.play-btn-color.house.active {
+  animation: yourPick 1s 2.5s linear forwards;
+}
+
+/* ----- Exibe mensagem de vitória/perda/empate ----- */
+.game-end {
+  font-size: 3.8em;
+  color: white;
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+#game-win,
+#game-lose,
+#game-draw,
+.replay-btn {
+  display: none;
+  opacity: 0;
+}
+
+.replay-btn {
+  font-size: 0.4em;
+  color: #3c4262;
+  padding: 18px 80px;
+  background-color: #fff;
+  border-radius: 12px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: color 0.4s;
+  letter-spacing: 3px;
+}
+
+.replay-btn:hover {
+  color: hsl(349, 71%, 52%);
+}
+
+.replay-btn.active,
+#game-win.active,
+#game-lose.active,
+#game-draw.active {
+  display: block;
+  animation: appear 0.6s 3.5s linear forwards;
+  font-size: x-large;
+}
+
+/* ----- Animações de jogo ----- */
+/* Seleção de elementos */
+@keyframes yourPick {
+  to {
+    transform: scale(1.8);
+  }
+}
+/* Desaparecer */
+@keyframes disappear {
+  from {
+    opacity: 1;
+    pointer-events: all;
+  }
+  to {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+/* Aparecer */
+@keyframes appear {
+  from {
+    opacity: 0;
+    pointer-events: none;
+  }
+  to {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+/* Ganhando / Perdendo*/
+@keyframes pulse {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  to {
+    transform: scale(1.3);
+    opacity: 0.01;
+  }
+}
+
+.play-btn-color.player.active.win::before {
+  content: "";
+  position: absolute;
+  background-color: #fff;
+  width: 224px;
+  height: 224px;
+  border-radius: 50%;
+  animation: pulse 1s infinite linear;
+}
+
+.play-btn-color.house.active.win::before {
+  content: "";
+  position: absolute;
+  background-color: #fff;
+  width: 224px;
+  height: 224px;
+  border-radius: 50%;
+  animation: pulse 1s infinite linear;
+}
+
+/* ----- Design responsivo----- */
+@media screen and (max-width: 1250px) {
+  .header-wrapper {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 1180px) {
+  .play-btn-color.player.active,
+  .you-picked {
+    left: 10%;
+  }
+}
+
+@media screen and (max-width: 970px) {
+  .play-btn-color {
+    width: 196px;
+    height: 196px;
+  }
+
+  .play-btn {
+    width: 148px;
+    height: 148px;
+  }
+
+  .play-btn-color.player.active.win::before {
+    width: 196px;
+    height: 196px;
+  }
+
+  .play-btn-color.house.active.win::before {
+    width: 196px;
+    height: 196px;
+  }
+
+  .house-picked {
+    transform: translateX(-10%);
+  }
+
+  .house-wait {
+    width: 196px;
+    height: 196px;
+  }
+}
+
+@media screen and (max-width: 840px) {
+  .game-wrapper {
+    margin-top: 0;
+  }
+
+  .play-btn-color.player.active,
+  .you-picked {
+    left: 75px;
+    top: 40%;
+  }
+
+  @keyframes yourPick {
+    to {
+      transform: scale(1.1);
+    }
+  }
+
+  .play-btn-color.player.active {
+    transform: scale(1.1);
+  }
+
+  .play-btn-color.house,
+  .house-wait,
+  .house-picked {
+    top: 40%;
+    left: auto;
+    right: 75px;
+  }
+
+  .house-picked {
+    transform: translateX(10%) !important;
+  }
+
+  .you-picked {
+    transform: translateX(15%);
+  }
+
+  .game-end {
+    bottom: 150px;
+  }
+
+  .rules-btn {
+    right: 50%;
+    transform: translateX(50%);
+  }
+  .tela-cheia {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 615px) {
+  .replay-btn {
+    white-space: nowrap;
+  }
+  .header-wrapper {
+    margin: 50px auto;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .play-btn-color,
+  .play-btn-color.player.active.win::before,
+  .play-btn-color.house.active.win::before,
+  .house-wait {
+    width: 140px;
+    height: 140px;
+  }
+
+  .play-btn {
+    width: 105px;
+    height: 105px;
+  }
+
+  .house-picked {
+    transform: translateX(-10%);
+  }
+
+  .game-wrapper {
+    grid-template-columns: 118px 118px 118px;
+    grid-template-rows: 218px 218px;
+  }
+
+  .text-picked {
+    font-size: 1.3em;
+  }
+
+  h1 {
+    font-size: 2.5em;
+    max-width: 200px;
+  }
+
+  .score-wrapper {
+    padding: 10px 40px 0;
+  }
+
+  .score-wrapper p {
+    font-size: 1.2em;
+  }
+
+  .play-btn-color.player.active,
+  .you-picked,
+  .play-btn-color.house,
+  .house-wait,
+  .house-picked {
+    top: 35%;
+  }
+
+  #rules {
+    width: 250px;
+  }
+}
+
+@media screen and (max-width: 490px) {
+  .play-btn-color.house,
+  .house-wait,
+  .house-picked {
+    right: 40px;
+  }
+
+  .play-btn-color.player.active,
+  .you-picked {
+    left: 30px;
+  }
+
+  .score-wrapper {
+    padding: 10px 20px 0;
+  }
+
+  h1 {
+    font-size: 1.8em;
+    max-width: 100px;
+  }
+
+  .header-wrapper {
+    padding: 15px 20px;
+  }
+
+  .game-wrapper {
+    margin-left: -20px;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .game-wrapper {
+    margin-left: -10px;
+    width: 100%;
+  }
+  /* mobile responsivo teste */
+  .game-text {
+    top: 190px;
+  }
+
+  .rules-btn {
+    bottom: 10px;
+  }
+
+  .game-end {
+    bottom: 90px;
+  }
+
+  .play-btn-color.player.active,
+  .play-btn-color.house,
+  .house-wait {
+    top: 250px;
+  }
+  /* fim teste responsivo */
+}
+
+@media screen and (max-width: 375px) {
+  .play-btn-color.house,
+  .house-wait,
+  .house-picked {
+    right: 30px;
+  }
+}

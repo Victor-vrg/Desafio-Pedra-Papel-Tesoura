@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Pedra Papel Tesoura</title>
+
+</head>
+<div class="tela-cheia">
+<button class="tela-cheia" onclick="AtivarDesativarFS();">Use o Modo tela cheia para melhor experiência clicando aqui</button>
+</div>
+<body>
+
+  <!-- Placar e título -->
+<header class="header-wrapper">
+  <h1>Pedra Papel Tesoura</h1>
+
+  <div class="score-wrapper">
+    <p>PLACAR</p>
+    <p id="score">0</p>
+  </div>
+</header>
+
+<!-- Quando o jogo é iniciado, exibir textos: Você escolheu, O oponente escolheu -->
+<div class="game-text">
+  <p class="you-picked text-picked"> Você escolheu </p>
+  <p class="house-picked text-picked"> O oponente escolheu </p>
+</div>
+
+<!-- Quando o jogo termina, exibe textos: Ganhe, Perde, Empate -->
+<div class="game-end">
+  <p id="game-win">VOCÊ GANHOU!</p>
+  <p id="game-lose">VOCÊ PERDEU!</p>
+  <p id="game-draw">EMPATE</p>
+  <p class="replay-btn">JOGAR NOVAMENTE</p>
+</div>
+
+<!-- Mostra o movimento do oponente -->
+<div class="house-moves">
+  <div class="house-wait"></div>
+  <div class="house-pick">
+    <div class="play-btn-color paper house">
+      <div class="play-btn">
+        <img src="assets/icon-paper.svg" alt="paper icon">
+      </div>
+    </div>
+
+    <div class="play-btn-color scissors house">
+      <div class="play-btn">
+        <img src="assets/icon-scissors.svg" alt="scissors icon">
+      </div>
+    </div>
+
+    <div class="play-btn-color rock house">
+      <div class="play-btn">
+        <img src="assets/icon-rock.svg" alt="rock icon">
+      </div>
+  </div>
+</div>
+
+<!-- Menu principal do jogo: Mostra ao usuário os 3 elementos em que ele pode clicar -->
+<main class="game-wrapper">
+  <div class="play-btn-color paper player">
+    <div class="play-btn">
+      <img src="assets/icon-paper.svg" alt="paper icon">
+    </div>
+  </div>
+
+  <div class="play-btn-color scissors player">
+    <div class="play-btn">
+      <img src="assets/icon-scissors.svg" alt="scissors icon">
+    </div>
+  </div>
+
+  <div class="play-btn-color rock player">
+    <div class="play-btn">
+      <img src="assets/icon-rock.svg" alt="rock icon">
+    </div>
+  </div>
+</main>
+
+<!-- Exibe o botão "regras", mostrando o modal de regras ao clicar -->
+<div class="rules-wrapper">
+  <div class="rules-modal">
+    <div class="rules-modal-title">
+      <p>REGRAS</p>
+      <img src="assets/icon-close.svg" >
+    </div>
+    <img id="rules" src="assets/image-rules.svg" >
+  </div>
+
+  <p class="rules-btn">REGRAS</p>
+</div>
+
+
+<script src="./js/script.js"></script>
+</body>
+</html>
