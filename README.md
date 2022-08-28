@@ -50,7 +50,7 @@ Tela mobile
 ### Recursos úteis
 
 - [BOXY SVG](https://boxy-svg.com/) - E uma ferramenta de edição de arquivos SVG online
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+- [GITHUB PAGES ](https://pages.github.com/) - O GitHub Pages é um serviço de hospedagem de site estático que usa arquivos HTML, CSS e JavaScript diretamente de um repositório no GitHub e, como opção, executa os arquivos por meio de um processo e publica um site.
 
 ## Autor
 
