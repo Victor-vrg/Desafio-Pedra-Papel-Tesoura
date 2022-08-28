@@ -38,7 +38,7 @@ Tela mobile
 
 ### Links
 
-- Solução URL: [Solução ](https://your-solution-url.com)
+- Solução URL: [Solução ](https://www.frontendmentor.io/solutions/frontend-mentor-pedra-papel-tesoura-soluo-usando-html-css-e-js-NJRoM7HYzE)
 - Site URL: [Desafio Pedra Papel Tesoura](https://victor-vrg.github.io/Desafio-Pedra-Papel-Tesoura/)
 
 ### Construido em
