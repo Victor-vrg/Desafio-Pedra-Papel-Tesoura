@@ -38,8 +38,8 @@ Tela mobile
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solução URL: [Solução ](https://your-solution-url.com)
+- Site URL: [Desafio Pedra Papel Tesoura](https://victor-vrg.github.io/Desafio-Pedra-Papel-Tesoura/)
 
 ### Construido em
 
